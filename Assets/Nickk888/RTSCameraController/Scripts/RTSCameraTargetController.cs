@@ -59,27 +59,36 @@ public class RTSCameraTargetController : MonoBehaviour
 
     public RectTransform RTSCanvasRectTransform;
 
-    [SerializeField] [Tooltip("The ground layer for the height check.")]
+    [SerializeField]
+    [Tooltip("The ground layer for the height check.")]
     public LayerMask GroundLayer;
 
-    [SerializeField] [Tooltip("The target for the camera to follow.")]
+    [SerializeField]
+    [Tooltip("The target for the camera to follow.")]
     public Transform CameraTarget;
 
-    [Space] [Header("Time Scale")]
-    [SerializeField] [Tooltip("Check to make the controller be independent on the Time Scale.")]
+    [Space]
+    [Header("Time Scale")]
+    [SerializeField]
+    [Tooltip("Check to make the controller be independent on the Time Scale.")]
     public bool IndependentTimeScale = true;
 
-    [SerializeField] [Tooltip("Check to make the Cinemachine Brain be independent on the Time Scale.")]
+    [SerializeField]
+    [Tooltip("Check to make the Cinemachine Brain be independent on the Time Scale.")]
     public bool IndependentCinemachineBrainTimeScale = true;
 
-    [Space][Header("Properties")]
-    [SerializeField][Tooltip("Allows or Disallows rotation of the Camera.")]
+    [Space]
+    [Header("Properties")]
+    [SerializeField]
+    [Tooltip("Allows or Disallows rotation of the Camera.")]
     public bool AllowMouseRotate = true;
 
-    [SerializeField] [Tooltip("Allows or Disallows camera rotation with keys/gamepad input.")]
+    [SerializeField]
+    [Tooltip("Allows or Disallows camera rotation with keys/gamepad input.")]
     public bool AllowKeysRotate = true;
 
-    [SerializeField] [Tooltip("Allows or Disallows rotation of the Cameras Tilt.")]
+    [SerializeField]
+    [Tooltip("Allows or Disallows rotation of the Camera's Tilt.")]
     public bool AllowTiltRotate = true;
 
     [SerializeField]
@@ -90,29 +99,37 @@ public class RTSCameraTargetController : MonoBehaviour
     [Tooltip("Allows or disallows zooming.")]
     public bool AllowZoom = true;
 
-    [SerializeField] [Tooltip("Allows or Disallows mouse drag movement.")]
+    [SerializeField]
+    [Tooltip("Allows or disallows mouse drag movement.")]
     public bool AllowDragMove = true;
 
     public enum MouseDragStyle { MouseDirection, Direct, DirectInverted }
-    [SerializeField] [Tooltip("The style of mouse Drag.")]
+    [SerializeField]
+    [Tooltip("The style of mouse drag.")]
     private MouseDragStyle mouseDragStyle = MouseDragStyle.MouseDirection;
 
-    [SerializeField] [Tooltip("Allows or Disallows camera movement with keys/gamepad input.")]
+    [SerializeField]
+    [Tooltip("Allows or disallows camera movement with keys/gamepad input.")]
     public bool AllowKeysMove = true;
 
-    [SerializeField] [Tooltip("Allows or Disallows camera movement using the screen sides.")]
+    [SerializeField]
+    [Tooltip("Allows or disallows camera movement using the screen sides.")]
     public bool AllowScreenSideMove = true;
 
-    [SerializeField] [Tooltip("Allows or Disallows camera height offset.")]
+    [SerializeField]
+    [Tooltip("Allows or disallows camera height offset.")]
     public bool AllowHeightOffsetChange = true;
 
-    [SerializeField] [Tooltip("Lock the mouse while using the rotate feature?")]
+    [SerializeField]
+    [Tooltip("Lock the mouse while using the rotate feature?")]
     public bool MouseLockOnRotate = true;
 
-    [SerializeField] [Tooltip("Invert the vertical mouse input?")]
+    [SerializeField]
+    [Tooltip("Invert the vertical mouse input?")]
     public bool InvertMouseVertical = false;
 
-    [SerializeField] [Tooltip("Invert the horizontal mouse input?")]
+    [SerializeField]
+    [Tooltip("Invert the horizontal mouse input?")]
     public bool InvertMouseHorizontal = false;
 
     [SerializeField]
@@ -146,37 +163,46 @@ public class RTSCameraTargetController : MonoBehaviour
     [SerializeField, Min(0)]
     public float HeightOffsetSpeed = 20f;
 
-    [Space] [Header("Screen Sides")]
-    [SerializeField, Min(0)] [Tooltip("The size of the Screen Sides Zone in pixels.")]
+    [Space]
+    [Header("Screen Sides")]
+    [SerializeField, Min(0)]
+    [Tooltip("The size of the screen sides zone in pixels.")]
     public int ScreenSidesZoneSize = 75;
 
-    [Space] [Header("Mouse Drag")]
-    [SerializeField, Min(0)] [Tooltip("The Dead Zone of the drag feature. How far from the circles center has the cursor be, to start draging?")]
+    [Space]
+    [Header("Mouse Drag")]
+    [SerializeField, Min(0)]
+    [Tooltip("The dead zone of the drag feature. How far from the circle's center does the cursor have to be to start dragging?")]
     public int CameraDragDeadZone = 5;
 
     [Space]
     [Header("Limits")]
     [SerializeField]
-    [Tooltip("The Minimum for the cameras height Offset.")]
+    [Tooltip("The minimum for the camera's height offset.")]
     public float HeightOffsetMin = 1.0f;
 
     [SerializeField]
-    [Tooltip("The Maximum for the cameras height Offset.")]
+    [Tooltip("The maximum for the camera's height offset.")]
     public float HeightOffsetMax = 50f;
 
-    [SerializeField, Range(0, 89)] [Tooltip("The Minimum Tilt of the camera.")]
+    [SerializeField, Range(0, 89)]
+    [Tooltip("The minimum tilt of the camera.")]
     public float CameraTiltMin = 15f;
 
-    [SerializeField, Range(0, 89)] [Tooltip("The Maximum Tilt of the camera.")]
+    [SerializeField, Range(0, 89)]
+    [Tooltip("The maximum tilt of the camera.")]
     public float CameraTiltMax = 75f;
 
-    [SerializeField, Min(0)] [Tooltip("The Minimum zoom factor")]
+    [SerializeField, Min(0)]
+    [Tooltip("The minimum zoom factor")]
     public float CameraZoomMin = 5;
 
-    [SerializeField, Min(0)] [Tooltip("The Maximum zoom factor")]
+    [SerializeField, Min(0)]
+    [Tooltip("The maximum zoom factor")]
     public float CameraZoomMax = 200;
 
-    [Space] [Header("Smoothing")]
+    [Space]
+    [Header("Smoothing")]
     [SerializeField, Min(0)]
     public float CameraTargetGroundHeightCheckSmoothTime = 4f;
 
@@ -285,10 +311,10 @@ public class RTSCameraTargetController : MonoBehaviour
         HandleCameraHeight();
     }
 
-    #if UNITY_EDITOR
+#if UNITY_EDITOR
     private void OnDrawGizmosSelected()
     {
-        if(enableBoundaries)
+        if (enableBoundaries)
         {
             Handles.color = Color.green;
             Handles.DrawLine(new Vector3(BoundaryMinX, 0, BoundaryMinZ), new Vector3(BoundaryMaxX, 0, BoundaryMinZ));
@@ -301,19 +327,17 @@ public class RTSCameraTargetController : MonoBehaviour
             Handles.Label(new Vector3(0, 0, BoundaryMaxZ), $"Max Z: {BoundaryMaxZ}");
         }
     }
-    #endif
+#endif
 
 
     #endregion
 
     #region Event Methods
-
     private void Application_FocusChanged(bool focused) => _isFocused = focused;
 
     #endregion
 
     #region Internal Functions
-    
     internal void UpdateCinemachineBrain()
         => _cinemachineBrain.m_IgnoreTimeScale = IndependentCinemachineBrainTimeScale;
 
@@ -337,7 +361,6 @@ public class RTSCameraTargetController : MonoBehaviour
         HandleGroundHeightCorrection();
         HandleHeightOffset();
     }
-    
     internal void HandleCameraError()
         => Debug.LogError("Main Camera wasn't found. Can't get the Cinemachine Brain.");
 
@@ -390,9 +413,9 @@ public class RTSCameraTargetController : MonoBehaviour
         if (!AllowHeightOffsetChange)
             return;
 
-        if(_inputProvider.HeightUpButtonInput())
+        if (_inputProvider.HeightUpButtonInput())
             _heightOffset += GetTimeScale() * HeightOffsetSpeed;
-        else if(_inputProvider.HeightDownButtonInput())
+        else if (_inputProvider.HeightDownButtonInput())
             _heightOffset -= GetTimeScale() * HeightOffsetSpeed;
 
         _heightOffset = Mathf.Clamp(_heightOffset, HeightOffsetMin, HeightOffsetMax);
@@ -434,7 +457,7 @@ public class RTSCameraTargetController : MonoBehaviour
     {
         if (_isLockedOnTarget)
         {
-            if(_lockedOnTransform == null)
+            if (_lockedOnTransform == null)
                 CameraTarget.position = _hardLocked ? _lockedOnPosition : Vector3.Lerp(CameraTarget.position, _lockedOnPosition, TargetLockSpeed * GetTimeScale());
             else
                 CameraTarget.position = _hardLocked ? _lockedOnTransform.position : Vector3.Lerp(CameraTarget.position, _lockedOnTransform.position, TargetLockSpeed * GetTimeScale());
@@ -445,7 +468,6 @@ public class RTSCameraTargetController : MonoBehaviour
     internal void HandleScreenSideMove(Vector2 mousePos)
     {
         Vector3 moveVector = GetMoveVectorFromMousePosition(mousePos);
-        
         if (ShouldMoveTarget(moveVector) && !IsMousePositionOutsideScreen(mousePos))
         {
             MoveTarget(moveVector);
@@ -627,7 +649,6 @@ public class RTSCameraTargetController : MonoBehaviour
             });
         }
     }
-    
     internal void HandleRotation()
     {
         if (!_isDragging)
@@ -716,7 +737,6 @@ public class RTSCameraTargetController : MonoBehaviour
     {
         float clampedX = Mathf.Clamp(CameraTarget.position.x, BoundaryMinX, BoundaryMaxX);
         float clampedZ = Mathf.Clamp(CameraTarget.position.z, BoundaryMinZ, BoundaryMaxZ);
-        
         CameraTarget.position = new Vector3(clampedX, CameraTarget.position.y, clampedZ);
     }
 
@@ -813,7 +833,7 @@ public class RTSCameraTargetController : MonoBehaviour
     }
 
     /// <summary>
-    /// Get's the corresponding Delta Time depending on the Independent Time Scale variable.
+    /// Gets the corresponding delta time depending on the IndependentTimeScale variable.
     /// </summary>
     /// <returns></returns>
     public float GetTimeScale() => IndependentTimeScale ? Time.unscaledDeltaTime : Time.deltaTime;
