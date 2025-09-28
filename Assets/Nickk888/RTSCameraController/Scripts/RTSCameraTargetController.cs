@@ -82,7 +82,12 @@ public class RTSCameraTargetController : MonoBehaviour
     [SerializeField] [Tooltip("Allows or Disallows rotation of the Cameras Tilt.")]
     public bool AllowTiltRotate = true;
 
-    [SerializeField] [Tooltip("Allows or Disallows Zooming.")]
+    [SerializeField]
+    [Tooltip("Allows or disallows rotation of the camera's yaw.")]
+    public bool AllowYawRotate = true;
+
+    [SerializeField]
+    [Tooltip("Allows or disallows zooming.")]
     public bool AllowZoom = true;
 
     [SerializeField] [Tooltip("Allows or Disallows mouse drag movement.")]
@@ -666,7 +671,7 @@ public class RTSCameraTargetController : MonoBehaviour
     {
         Vector2 rotationInput = GetRotationInput();
 
-        if (rotationInput.x != 0)
+        if (rotationInput.x != 0 && AllowYawRotate)
         {
             _currentRotateDir = rotationInput.x > 0;
             _targetCameraRotate += rotationInput.x * CameraRotateSpeed * (InvertMouseHorizontal ? -1 : 1);
