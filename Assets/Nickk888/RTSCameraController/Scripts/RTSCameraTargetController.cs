@@ -110,7 +110,12 @@ public class RTSCameraTargetController : MonoBehaviour
     [SerializeField] [Tooltip("Invert the horizontal mouse input?")]
     public bool InvertMouseHorizontal = false;
 
-    [Space] [Header("Speed")]
+    [SerializeField]
+    [Tooltip("Start at maximum tilt?")]
+    public bool StartMaxTilt = false;
+
+    [Space]
+    [Header("Speed")]
     [SerializeField, Min(0)]
     public float CameraMouseSpeed = 16.0f;
 
@@ -338,7 +343,7 @@ public class RTSCameraTargetController : MonoBehaviour
 
     internal void InitializeCameraTilt()
     {
-        _currentCameraTilt = Mathf.Lerp(CameraTiltMin, CameraTiltMax, CameraTiltMiddleValue);
+        _currentCameraTilt = Mathf.Lerp(CameraTiltMin, CameraTiltMax, StartMaxTilt ? 1.0f : CameraTiltMiddleValue);
         _targetCameraTilt = _currentCameraTilt;
         _virtualCameraGameObject.transform.eulerAngles = new Vector3(_currentCameraTilt, _virtualCameraGameObject.transform.eulerAngles.y, 0);
     }
