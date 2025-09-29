@@ -1,0 +1,22 @@
+{
+    "name": "com.nickk888.rtscameracontroller-cinemachine",
+    "version": "2.1.2",
+    "displayName": "RTS Camera Controller - Cinemachine",
+    "description": "An RTS-style Camera Controller for Unity's Cinemachine system",
+    "unity": "2022.3",
+    "documentationUrl": "https://github.com/Nickk888SAMP/RTSCameraController-Cinemachine?tab=readme-ov-file#unity-3d-real-time-strategycity-builder-camera-controller-for-cinemachine-virtual-camera",
+    "dependencies":
+    {
+        "com.unity.cinemachine": "2.1.0"
+    },
+    "license": "GPL-3.0-or-later",
+    "hideInEditor": false,
+    "samples":
+    [
+      {
+        "displayName": "City",
+        "description": "Sample scene that demonstrates all of the available functionality",
+        "path": "Samples~/City"
+      }
+    ]
+}
