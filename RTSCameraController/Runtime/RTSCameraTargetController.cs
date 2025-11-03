@@ -258,7 +258,7 @@ public class RTSCameraTargetController : MonoBehaviour
     private bool _isSideZoneMoving;
     private bool _isLockedOnTarget;
     private bool _hardLocked;
-    private bool _isFocused;
+    private bool _isFocused = true; // Default to true so we don't end up cancelling our target locking because we don't get the focus changed event if another scene loaded us
 
     #endregion
 
@@ -332,7 +332,6 @@ public class RTSCameraTargetController : MonoBehaviour
         }
     }
 #endif
-
 
     #endregion
 
