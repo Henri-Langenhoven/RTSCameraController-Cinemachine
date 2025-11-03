@@ -1,6 +1,6 @@
 {
     "name": "com.nickk888.rtscameracontroller-cinemachine",
-    "version": "2.1.2",
+    "version": "2.1.3",
     "displayName": "RTS Camera Controller - Cinemachine",
     "description": "An RTS-style Camera Controller for Unity's Cinemachine system",
     "unity": "2022.3",
