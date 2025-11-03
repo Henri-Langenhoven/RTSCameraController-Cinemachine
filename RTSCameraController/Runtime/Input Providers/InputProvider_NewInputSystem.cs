@@ -1,16 +1,23 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.InputSystem;
 
 public class InputProvider_NewInputSystem : MonoBehaviour, IRTSCInputProvider
 {
     private RTSCC_InputActions inputActions;
 
-    private void Awake()
+    private void OnEnable()
     {
         inputActions = new RTSCC_InputActions();
         inputActions.Enable();
+    }
+
+    private void OnDisable()
+    {
+        inputActions.Disable();
+    }
+
+    private void OnDestroy()
+    {
+        inputActions.Disable();
     }
 
     public bool DragButtonInput() => inputActions.RTSCC.Drag.IsPressed();
@@ -33,3 +40,4 @@ public class InputProvider_NewInputSystem : MonoBehaviour, IRTSCInputProvider
 
     public bool RotateLeftButtonInput() => inputActions.RTSCC.RotateLeft.IsPressed();
 }
+
